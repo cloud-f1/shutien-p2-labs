@@ -18,10 +18,14 @@
 ## 每位學員 clone 完先跑這個
 
 ```
-git clone git@github.com:cloud-f1/shutien-p2-labs.git
+git clone https://github.com/cloud-f1/shutien-p2-labs.git
 cd shutien-p2-labs
-bash scripts/setup-exercise.sh
+node scripts/setup-exercise.js
 ```
+
+用 **HTTPS** clone（不是 SSH）——書田工程師的機器不一定設過 SSH key，HTTPS 配 Git 內建的
+Credential Manager（Windows／macOS 都內建）跳瀏覽器登入最省事。跨平台（macOS／Linux／
+**Windows** 都能跑，這堂課本來就需要 Node——`npx skills add` 那步已經要用到了，不算多裝依賴）。
 
 `main` 上 commit 的是乾淨版本——漏洞是刻意設計成**未提交的改動**（讓 `/security-review` 有真的
 pending changes 可以掃），所以每位學員都要自己跑一次腳本才會有練習素材，clone 完不會自動有。
@@ -32,11 +36,17 @@ pending changes 可以掃），所以每位學員都要自己跑一次腳本才�
 | 檔案 | 用途 |
 |---|---|
 | `CLAUDE.md` | 幾條示範用的 never/must 規則，給 `code-review` skill 抽限制條件用 |
-| `lib/patient-lookup.js` | 已 commit 的乾淨版本；跑過 `scripts/setup-exercise.sh` 後會有未提交的改動，引入示範用漏洞給 `/security-review` 掃 |
-| `scripts/setup-exercise.sh` | 每位學員 clone 完先跑這個，見上方 |
+| `lib/patient-lookup.js` | 已 commit 的乾淨版本；跑過 `scripts/setup-exercise.js` 後會有未提交的改動，引入示範用漏洞給 `/security-review` 掃 |
+| `scripts/setup-exercise.js` | 每位學員 clone 完先跑這個（`node scripts/setup-exercise.js`），見上方 |
 | `docs/sample-report.md` | AI 味很重的示範文件，給 Humanizer skill 練習順稿 |
 | `lab2/README.md` | 指向課程正文，不重複內容 |
 | `SOLUTION.md` | 講師解答（`solution/lab1-security-fix` 分支），完整 before/after |
+
+## 已知環境相依
+
+- **Node.js**：跑 `setup-exercise.js` 要用，`npx skills add` 這堂課本來就需要，不是新增的相依。
+- **git**：clone＋`/security-review` 讀 git diff 都要用；Windows 上「Git for Windows」已經內建，
+  裝完你也會拿到 Git Bash（想用 bash 版指令也可以，但腳本本身已經是跨平台的 Node 版，不需要）。
 
 ## 資料安全提醒
 
