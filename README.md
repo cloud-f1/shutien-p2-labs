@@ -15,14 +15,28 @@
   **不需要這個 repo 的任何內容**——3 張情境卡都在課程 lesson 正文裡。`lab2/README.md` 只放一個指標，
   不重複課程內容（避免兩邊漂移）。
 
+## 每位學員 clone 完先跑這個
+
+```
+git clone git@github.com:cloud-f1/shutien-p2-labs.git
+cd shutien-p2-labs
+bash scripts/setup-exercise.sh
+```
+
+`main` 上 commit 的是乾淨版本——漏洞是刻意設計成**未提交的改動**（讓 `/security-review` 有真的
+pending changes 可以掃），所以每位學員都要自己跑一次腳本才會有練習素材，clone 完不會自動有。
+腳本冪等，重跑安全。
+
 ## 內容說明
 
 | 檔案 | 用途 |
 |---|---|
 | `CLAUDE.md` | 幾條示範用的 never/must 規則，給 `code-review` skill 抽限制條件用 |
-| `lib/patient-lookup.js` | 已 commit 的乾淨版本；**working tree 有未提交的改動**引入示範用漏洞，給 `/security-review` 掃 |
+| `lib/patient-lookup.js` | 已 commit 的乾淨版本；跑過 `scripts/setup-exercise.sh` 後會有未提交的改動，引入示範用漏洞給 `/security-review` 掃 |
+| `scripts/setup-exercise.sh` | 每位學員 clone 完先跑這個，見上方 |
 | `docs/sample-report.md` | AI 味很重的示範文件，給 Humanizer skill 練習順稿 |
 | `lab2/README.md` | 指向課程正文，不重複內容 |
+| `SOLUTION.md` | 講師解答（`solution/lab1-security-fix` 分支），完整 before/after |
 
 ## 資料安全提醒
 
